@@ -1,0 +1,20 @@
+version: "3"
+
+services: 
+    web:
+        container_name: api-rest-users
+        restart: always
+        build: .
+        ports: 
+            - "5000:3000"
+        links: 
+            - mongoUser
+        volumes: 
+            - .:/usr/src/app
+    mongoUser:
+        container_name: mongouserdatabase
+        image: mongo
+        ports: 
+            - "27019:27017"
+        logging: 
+            driver: none
